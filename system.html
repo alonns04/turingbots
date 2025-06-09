@@ -36,26 +36,53 @@
 
             </header>
             <main class="mb-auto col-12">
-              <h1>Register a new account</h1>
+              <h1>Buscá tu solución con nosotros</h1>
               
-<form class="row">
+<style>
+  .form-control,
+  .form-control:focus,
+  .form-control::placeholder,
+  textarea.form-control,
+  textarea.form-control:focus {
+    background-color: #2f2f2f !important;
+    color: #ffffff !important;
+    border-color: #444 !important;
+    box-shadow: none !important;
+  }
+
+  .form-label {
+    color: #ffffff;
+  }
+</style>
+
+
+<form id="contact-form" method="POST" action="https://formspree.io/f/mvgrkrnk" class="row">
+  <div class="col-12 mb-3">
+    <label for="name" class="form-label">Nombre completo</label>
+    <input type="text" class="form-control form-control-lg" id="name" name="name" required>
+  </div>
+
+  <div class="col-12 mb-3">
+    <label for="email" class="form-label">Correo electrónico</label>
+    <input type="email" class="form-control form-control-lg" id="email" name="email" required>
+  </div>
+
+  <div class="col-12 mb-3">
+    <label for="company" class="form-label">Empresa</label>
+    <input type="text" class="form-control form-control-lg" id="company" name="company">
+  </div>
+
+  <div class="col-12 mb-3">
+    <label for="message" class="form-label">¿Qué tipo de solución estás buscando?</label>
+    <textarea class="form-control form-control-lg" id="message" name="message" rows="5" required></textarea>
+  </div>
+
   <div class="col-12">
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Email address</label>
-    <input type="email" class="form-control form-control-lg bg-gray-800 border-dark" id="exampleInputEmail1" aria-describedby="emailHelp">
-    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    <button type="submit" class="btn btn-white btn-xl mb-4">Enviar</button>
   </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input type="password" class="form-control form-control-lg bg-gray-800 border-dark" id="exampleInputPassword1">
-  </div>
-  <div class="mb-3 form-check py-3">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">If you really don´t want any newsletter <strong>check this box</strong>. Then you just agree to receive our marketing mails and product stuff. If you check this box <strong>we will not send out our newsletter</strong> to you at all...on mondays.</label>
-  </div>
-  <button type="submit" class="btn btn-white btn-xl mb-4">Submit</button>
-</div>
 </form>
+
+
 
             </main>
           </div>
@@ -64,5 +91,34 @@
           
         </div>
 
-      </div></body>
+      </div>
+    
+    <script>
+document.getElementById("contact-form").addEventListener("submit", async function (e) {
+  e.preventDefault(); // prevenir envío automático
+
+  const form = e.target;
+  const data = new FormData(form);
+
+  try {
+    const response = await fetch(form.action, {
+      method: form.method,
+      body: data,
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+
+    if (response.ok) {
+      window.location.href = "thanks.html"; // redirigir al archivo personalizado
+    } else {
+      alert("Hubo un error al enviar el formulario.");
+    }
+  } catch (error) {
+    alert("Error de red.");
+  }
+});
+</script>
+
+    </body>
     </html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Gracias</title>
+  <meta http-equiv="refresh" content="4;url=index.html">
+  <link rel="stylesheet" href="css/theme.min.css">
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: sans-serif;
+      color: #fff;
+      background-color: #0a0a0a;
+    }
+
+    .thank-box {
+      background-color: #1a1a1a;
+      padding: 6rem 5rem; /* Más alto y ancho */
+      border-radius: 1.5rem;
+      text-align: center;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+      max-width: 900px; /* Más ancho */
+      width: 90%;
+    }
+
+    .thank-box h1 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      color: #fff;
+    }
+
+    .counter {
+      font-size: 1.25rem;
+      color: #ccc;
+      background-color: #2f2f2f;
+      padding: 0.75rem 1.25rem;
+      border-radius: 0.75rem;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body class="gradient">
+  <div class="thank-box">
+    <h1>Gracias por contactarnos, un colaborador se comunicará con tu equipo.</h1>
+    <div class="counter">Redireccionando en <span id="countdown">3</span>...</div>
+  </div>
+
+  <script>
+    let countdown = 3;
+    const countdownElement = document.getElementById("countdown");
+
+    const interval = setInterval(() => {
+      countdown--;
+      countdownElement.textContent = countdown;
+      if (countdown === 0) clearInterval(interval);
+    }, 1000);
+  </script>
+</body>
+</html>
